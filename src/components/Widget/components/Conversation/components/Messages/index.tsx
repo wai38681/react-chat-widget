@@ -7,6 +7,7 @@ import { MessageTypes, Link, CustomCompMessage, GlobalState } from '../../../../
 import { setBadgeCount, markAllMessagesRead } from '../../../../../../store/actions';
 
 import Loader from './components/Loader';
+import Linkify from 'react-linkify';
 import './styles.scss';
 
 type Props = {
@@ -48,7 +49,8 @@ function Messages({ profileAvatar, showTimeStamp }: Props) {
   // }
 
   return (
-    <div id="messages" className="rcw-messages-container" ref={messageRef}>
+
+    <Linkify id="messages" className="rcw-messages-container" ref={messageRef}>
       {messages?.map((message, index) =>
         <div className="rcw-message" key={`${index}-${format(message.timestamp, 'hh:mm')}`}>
           {profileAvatar &&
@@ -59,7 +61,8 @@ function Messages({ profileAvatar, showTimeStamp }: Props) {
         </div>
       )}
       <Loader typing={typing} />
-    </div>
+    </Linkify>
+
   );
 }
 
