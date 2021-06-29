@@ -1,5 +1,5 @@
 import format from 'date-fns/format';
-import markdownIt from 'markdown-it';
+//import markdownIt from 'markdown-it';
 import markdownItSup from 'markdown-it-sup';
 import markdownItSanitizer from 'markdown-it-sanitizer';
 import markdownItClass from '@toycode/markdown-it-class';
@@ -9,13 +9,20 @@ import { MessageTypes } from 'src/store/types';
 
 import './styles.scss';
 
+declare var require: any
+
 type Props = {
   message: MessageTypes;
   showTimeStamp: boolean;
 }
 
 function Message({ message, showTimeStamp }: Props) {
-  const sanitizedHTML = markdownIt()
+
+  var md = require('markdown-it')({
+    linkify: true
+  })
+  
+  const sanitizedHTML = md
     .use(markdownItClass, {
       img: ['rcw-message-img']
     })
