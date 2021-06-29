@@ -18,10 +18,11 @@ type Props = {
 
 function Message({ message, showTimeStamp }: Props) {
 
+  console.log("Running customized module...")
   var md = require('markdown-it')({
     linkify: true
   })
-  
+
   const sanitizedHTML = md
     .use(markdownItClass, {
       img: ['rcw-message-img']
