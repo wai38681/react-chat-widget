@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux';
-
 import { GlobalState, QuickButtonTypes } from 'src/store/types';
 import { AnyFunction } from 'src/utils/types';
-
 import './style.scss';
 
 type Props = {
@@ -10,6 +8,8 @@ type Props = {
 }
 
 function QuickButtons({ onQuickButtonClicked }: Props) {
+
+  console.log("Running customized module...")
   const buttons = useSelector((state: GlobalState) => state.quickButtons.quickButtons);
 
   const getComponentToRender = (button: QuickButtonTypes) => {
